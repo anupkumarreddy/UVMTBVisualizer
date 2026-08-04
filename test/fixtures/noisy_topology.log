@@ -1,0 +1,14 @@
+# Loading work.tb_top
+# UVM_INFO @ 0: reporter [RNTST] Running test smoke_test...
+# Random simulator banner that must be ignored
+# ============================================================================
+# Name             Type                 Size    Value
+# ============================================================================
+# uvm_test_top     smoke_test           -       @100
+#    fabric_env    chip_env             -       @104
+#      tx_agent    protocol_agent       -       @108
+#         drv      packet_drv           -       @112
+#         mon      packet_mon           -       @116
+#      sb          packet_scoreboard    4       @120
+# ============================================================================
+# UVM_INFO @ 20: reporter [PHASE] Started run phase

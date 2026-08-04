@@ -1,0 +1,38 @@
+vsim -c work.tb_top -do "run -all; quit"
+Loading sv_std.std
+Loading work.uvm_pkg
+Loading work.tb_top
+
+UVM_INFO @ 0: reporter [RNTST] Running test soc_smoke_test...
+UVM_INFO testbench/top_test.sv(67) @ 0: uvm_test_top [UVMTOP] UVM testbench topology:
+------------------------------------------------------------------------------------------------
+Name                          Type                                      Size
+------------------------------------------------------------------------------------------------
+uvm_test_top                  soc_smoke_test                            -
+  env                         soc_env                                   -
+    apb_agent                 apb_master_agent                          -
+      driver                  apb_master_driver                         -
+      monitor                 apb_monitor                               -
+      sequencer               apb_master_sequencer                      -
+    spi_agent                 spi_slave_agent                           -
+      driver                  spi_slave_driver                          -
+      monitor                 spi_monitor                               -
+      sequencer               spi_slave_sequencer                       -
+    gpio_agent                gpio_agent                                -
+      monitor                 gpio_monitor                              -
+    virtual_sequencer         soc_virtual_sequencer                     -
+    ral_model                 soc_reg_block                             -
+      ctrl_rm                 control_reg_block                         8
+      status_rm               status_reg_block                          4
+    reg_predictor             uvm_reg_predictor                         -
+    scoreboard                soc_scoreboard                            -
+      apb_fifo                uvm_tlm_analysis_fifo                     16
+      spi_fifo                uvm_tlm_analysis_fifo                     16
+    coverage                  soc_coverage_collector                    -
+------------------------------------------------------------------------------------------------
+UVM_INFO @ 0: uvm_test_top.env.apb_agent.driver [APB_DRV] Driver initialized
+UVM_INFO @ 0: uvm_test_top.env.spi_agent.monitor [SPI_MON] Monitor initialized
+UVM_INFO @ 100: uvm_test_top [PH_READY_TO_END] Testbench entering run phase
+UVM_INFO @ 5000000: reporter [TEST_DONE] Test soc_smoke_test completed successfully.
+** Note: $finish : testbench/tb_top.sv(142)
+** Time: 5000000 ns  Iteration: 0  Instance: /tb_top

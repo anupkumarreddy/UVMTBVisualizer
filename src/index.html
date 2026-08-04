@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UVM Testbench Visualizer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand" aria-label="UVM Testbench Visualizer">
+          <span class="brand-mark" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span class="brand-copy">
+            <strong>UVM Scope</strong>
+            <small>UVM block diagram visualizer</small>
+          </span>
+        </div>
+
+        <div class="toolbar">
+          <button class="button button-primary" id="open-log-button" type="button">
+            <span class="button-icon" aria-hidden="true">↗</span>
+            <span class="open-button-label">Open log</span>
+          </button>
+
+          <label class="search-control" for="search-input">
+            <span class="search-icon" aria-hidden="true"></span>
+            <input
+              id="search-input"
+              type="search"
+              placeholder="Find component or type…"
+              autocomplete="off"
+              spellcheck="false"
+              disabled
+            />
+            <kbd>⌘ F</kbd>
+          </label>
+          <span class="search-status" id="search-status" aria-live="polite"></span>
+        </div>
+
+        <div class="view-controls" aria-label="Canvas controls">
+          <button class="button button-quiet" id="expand-all-button" type="button" disabled>Expand all</button>
+          <button class="button button-quiet" id="fit-view-button" type="button" disabled>Fit view</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="canvas-panel" aria-label="UVM testbench block-diagram canvas">
+          <div class="canvas-meta" id="canvas-meta" hidden>
+            <span class="status-dot"></span>
+            <strong id="component-count">0 components</strong>
+            <span id="file-name">No log loaded</span>
+          </div>
+
+          <svg id="diagram-canvas" role="img" aria-label="Interactive UVM testbench block diagram"></svg>
+
+          <div class="state-layer" id="state-layer">
+            <div class="empty-graphic" aria-hidden="true">
+              <span class="graphic-node graphic-root"></span>
+              <span class="graphic-line graphic-line-a"></span>
+              <span class="graphic-line graphic-line-b"></span>
+              <span class="graphic-node graphic-child-a"></span>
+              <span class="graphic-node graphic-child-b"></span>
+              <span class="graphic-node graphic-child-c"></span>
+            </div>
+            <p class="eyebrow" id="state-eyebrow">Ready to inspect</p>
+            <h1 id="state-title">See your UVM testbench as a block diagram.</h1>
+            <p id="state-message">
+              Open a simulator log containing <code>uvm_top.print_topology()</code> output to map every
+              testbench component as familiar nested UVM architecture blocks.
+            </p>
+            <button class="button button-primary button-large" id="empty-open-button" type="button">Open a UVM log…</button>
+          </div>
+
+          <div class="canvas-hint" id="canvas-hint" hidden>
+            <span><b>Drag</b> to pan</span>
+            <span><b>Scroll</b> to zoom</span>
+            <span><b>Click</b> a block for details</span>
+            <span><b>Header control</b> to collapse</span>
+          </div>
+        </section>
+
+        <aside class="details-panel" aria-label="Component details">
+          <div class="details-heading">
+            <div>
+              <p class="eyebrow">Inspector</p>
+              <h2>Component details</h2>
+            </div>
+            <span class="inspector-indicator" aria-hidden="true"></span>
+          </div>
+
+          <div class="details-placeholder" id="details-placeholder">
+            <span class="placeholder-icon" aria-hidden="true">⌁</span>
+            <p>Click a component block to inspect its instance details.</p>
+          </div>
+
+          <div class="details-content" id="details-content" hidden>
+            <div class="component-identity">
+              <span class="category-swatch" id="detail-swatch"></span>
+              <div>
+                <p id="detail-category">Category</p>
+                <h3 id="detail-name">Component</h3>
+              </div>
+            </div>
+
+            <dl>
+              <div>
+                <dt>Full instance path</dt>
+                <dd class="path-value" id="detail-path"></dd>
+              </div>
+              <div>
+                <dt>Class type</dt>
+                <dd id="detail-type"></dd>
+              </div>
+              <div>
+                <dt>Reported size</dt>
+                <dd id="detail-size"></dd>
+              </div>
+            </dl>
+          </div>
+
+          <section class="legend" aria-labelledby="legend-title">
+            <div class="legend-heading">
+              <h3 id="legend-title">Type legend</h3>
+              <span>Inferred from class names</span>
+            </div>
+            <div class="legend-grid" id="legend-grid"></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="../dist/renderer.js"></script>
+  </body>
+</html>

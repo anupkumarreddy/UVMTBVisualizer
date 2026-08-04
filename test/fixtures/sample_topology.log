@@ -1,0 +1,21 @@
+vsim -c -do "run -all; quit" tb_top
+UVM_INFO @ 0: reporter [RNTST] Running test my_test...
+UVM_INFO testbench.sv(42) @ 0: uvm_test_top [UVMTOP] UVM testbench topology:
+----------------------------------------------------------------------------
+Name                          Type                          Size
+----------------------------------------------------------------------------
+uvm_test_top                  my_test                       -
+  env                         my_env                        -
+    agent0                    my_agent                      -
+      driver                  my_driver                     -
+      monitor                 my_monitor                    -
+      sequencer               my_sequencer                  -
+    agent1                    my_agent                      -
+      driver                  my_driver                     -
+      monitor                 my_monitor                    -
+      sequencer               my_sequencer                  -
+    scoreboard                my_scoreboard                 -
+    ral_model                 my_reg_block                  -
+----------------------------------------------------------------------------
+UVM_INFO @ 5000000: reporter [TEST_DONE] Test my_test completed.
+** Note: $finish    : testbench.sv(120)
